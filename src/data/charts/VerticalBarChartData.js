@@ -3,19 +3,37 @@ import store from 'vuex-store'
 let palette = store.getters.palette
 
 export default {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  labels: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
   datasets: [
     {
-      label: 'USA',
+      label: 'Feijão',
       backgroundColor: palette.primary,
       borderColor: palette.transparent,
-      data: [50, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+      data: [
+        Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+        Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+        Math.floor(Math.random() * 100)
+      ]
     },
     {
-      label: 'USSR',
+      label: 'Arroz',
       backgroundColor: palette.info,
       borderColor: palette.transparent,
-      data: [50, 10, 22, 39, 15, 20, 85, 32, 60, 50, 20, 30]
+      data: [
+        Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+        Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+        Math.floor(Math.random() * 100)
+      ]
+    },
+    {
+      label: 'Batata',
+      backgroundColor: palette.warning,
+      borderColor: palette.transparent,
+      data: [
+        Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+        Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+        Math.floor(Math.random() * 100)
+      ]
     }
   ]
 }

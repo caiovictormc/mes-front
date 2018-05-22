@@ -4,7 +4,7 @@
       <vuestic-widget class="info-widget">
         <div class="info-widget-inner">
           <div class="stats">
-            <div class="stats-title">Produção Total da Semana</div>
+            <div class="stats-title">Produção Total Semanal</div>
             <div class="stats-number">
               <i class="ion ion-ios-trending-up-outline text-primary stats-icon icon-wide"></i>
               59
@@ -17,7 +17,7 @@
       <vuestic-widget class="info-widget brand-info">
         <div class="info-widget-inner">
           <div class="stats">
-            <div class="stats-title">Maior Produção da Semana</div>
+            <div class="stats-title">Maior Lote Semanal</div>
             <div class="stats-number">
               <i class="ion ion-ios-arrow-round-up stats-icon icon-wide"></i>
               Feijão

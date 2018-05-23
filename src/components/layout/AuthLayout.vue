@@ -7,7 +7,7 @@
       </div>
       <div class="auth-wallpaper col-6 d-none d-lg-flex">
         <div class="oblique"></div>
-        <router-link class="i-vuestic" :to="{path: '/'}"></router-link>
+        <img id="logo" src="/static/img/canionlabs-logo-nome-lateral.png" alt="">
       </div>
     </div>
   </div>
@@ -54,10 +54,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        .i-vuestic {
+        #logo {
           z-index: 2;
-          height: $auth-wallpaper-ivuestic-h;
-          width: 100%;
+          width: 70%;
         }
         .oblique {
           position: absolute;

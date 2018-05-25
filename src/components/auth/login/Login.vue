@@ -29,6 +29,7 @@
 
 <script>
   import {tryLogin} from './../AuthMethods.js'
+  import router from '../../../router/index.js'
 
   export default {
     name: 'login',
@@ -45,10 +46,11 @@
       },
       authPass () {
         this.error = false
+        router.push('dashboard')
       },
       sendForm () {
         tryLogin(this.username, this.password)
-          .then(this.authPass())
+          .then(rsp => rsp !== false ? this.authPass() : {})
           .catch(e => this.authError())
       },
     }

@@ -32,7 +32,7 @@
               <a class="plain-link" href="#">Minha Conta</a>
             </div>
             <div class="dropdown-item plain-link-item">
-              <a class="plain-link" href="#">Sair</a>
+              <router-link class="plain-link" to="/auth/login" @click="logout()">Sair</router-link>
             </div>
           </div>
         </div>
@@ -44,6 +44,7 @@
 <script>
   import {mapGetters, mapActions} from 'vuex'
   import LanguageSelector from './LanguageSelector'
+  import {logout} from '../../../services/auth.js'
 
   export default {
     name: 'navbar',
@@ -79,7 +80,10 @@
         'closeMenu',
         'toggleSidebar',
         'isToggleWithoutAnimation'
-      ])
+      ]),
+      logout () {
+        logout()
+      }
     }
   }
 </script>

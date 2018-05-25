@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import {tryLogin} from './../AuthMethods.js'
+  import {tryLogin} from '../../../services/auth.js'
   import router from '../../../router/index.js'
 
   export default {

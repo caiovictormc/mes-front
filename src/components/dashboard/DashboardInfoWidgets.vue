@@ -1,66 +1,36 @@
 <template>
-  <div class="row dashboard-info-widgets">
-    <div class="col-md-6 col-xl-3">
-      <vuestic-widget class="info-widget">
-        <div class="info-widget-inner">
-          <div class="stats">
-            <div class="stats-title">Produção Total Semanal</div>
-            <div class="stats-number">
-              <i class="ion ion-ios-trending-up-outline text-primary stats-icon icon-wide"></i>
-              59
-            </div>
-          </div>
-        </div>
-      </vuestic-widget>
-    </div>
-    <div class="col-md-6 col-xl-3">
-      <vuestic-widget class="info-widget brand-info">
-        <div class="info-widget-inner">
-          <div class="stats">
-            <div class="stats-title">Maior Lote Semanal</div>
-            <div class="stats-number">
-              <i class="ion ion-ios-arrow-round-up stats-icon icon-wide"></i>
-              Feijão
-            </div>
-          </div>
-        </div>
-      </vuestic-widget>
-    </div>
-    <div class="col-md-6 col-xl-3">
-      <vuestic-widget class="info-widget">
-        <div class="info-widget-inner">
-          <div class="stats">
-            <div class="stats-title">Produção Total do Dia</div>
-            <div class="stats-number">
-              <i class="ion ion-ios-cube-outline text-primary stats-icon icon-wide"></i>
-              59
-            </div>
-          </div>
-        </div>
-      </vuestic-widget>
-    </div>
-    <div class="col-md-6 col-xl-3">
-      <vuestic-widget class="info-widget brand-info">
-        <div class="info-widget-inner">
-          <div class="stats">
-            <div class="stats-title">Início da Produção</div>
-            <div class="stats-number">
-              <i class="ion ion-ios-time-outline stats-icon icon-wide"></i>
-              00:00:00
-            </div>
-          </div>
-        </div>
-      </vuestic-widget>
+  <div>
+    <div v-for="(production, key) in data">
+      <cards-group :title="key" :data="production"></cards-group>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'dashboard-info-widgets',
+  import {dataCards} from '../../services/api/info.js'
+  import CardsGroup from './info-widgets/CardsGroup.vue'
 
+  export default {
+    components: {
+      CardsGroup
+    },
+    name: 'dashboard-info-widgets',
+    data () {
+      return {
+        weekly_prod: '',
+        daily_prod: '',
+        data: {}
+      }
+    },
+    methods: {
+      feedCards (feed) {
+        this.data = feed.data
+      }
+    },
     mounted () {
-      this.$refs.circleProgress.$data.value = 70
+      dataCards()
+        .then(rsp => this.feedCards(rsp))
+        .catch(e => console.error(e))
     }
   }
 </script>

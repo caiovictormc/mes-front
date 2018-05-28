@@ -9,6 +9,7 @@
   import Layout from 'components/layout/Layout'
   import AuthLayout from 'components/layout/AuthLayout'
   import VuesticPreLoader from 'vuestic-components/vuestic-preloader/VuesticPreLoader.vue'
+  // import {user} from './services/auth.js'
 
   export default {
     name: 'app',
@@ -19,7 +20,8 @@
     },
     computed: {
       isAuth () {
-        return this.$route.path.match('auth')
+        console.info(this.$route)
+        return this.$route.path.match('login')
       }
     }
   }

@@ -19,8 +19,11 @@
 <script>
   import LineChartData from 'data/charts/LineChartData'
   import VerticalBarChartData from 'data/charts/VerticalBarChartData'
-  import PieChartData from 'data/charts/PieChartData'
+  import {MonthlyChart} from 'data/charts/MonthlyChartData'
   import MyChart from './MyChart.vue'
+
+  let m = new MonthlyChart()
+  console.info(m.getData)
 
   export default {
     components: {
@@ -31,7 +34,7 @@
       return {
         lineChartData: LineChartData,
         verticalChartData: VerticalBarChartData,
-        pieChartData: PieChartData,
+        pieChartData: m.getData,
       }
     }
   }

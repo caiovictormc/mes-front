@@ -32,7 +32,7 @@
               <a class="plain-link" href="#">Minha Conta</a>
             </div>
             <div class="dropdown-item plain-link-item">
-              <router-link v-on:click.native="logout()" class="plain-link" to="/auth/login">Sair</router-link>
+              <router-link v-on:click.native="logout()" class="plain-link" to="/login">Sair</router-link>
             </div>
           </div>
         </div>

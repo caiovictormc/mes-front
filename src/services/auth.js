@@ -5,7 +5,7 @@ import axios from 'axios'
 const API_URL = 'http://localhost:8000/'
 const LOGIN_URL = API_URL + 'api/auth/token/'
 const REFRESH_URL = API_URL + 'api/auth/token-refresh/'
-// const CHECK_URL = API_URL + 'api/auth/token/'
+const CHECK_URL = API_URL + 'api/auth/token-verify/'
 
 
 export var user = {
@@ -37,20 +37,14 @@ export function getAuthHeader () {
   }
 }
 
+export async function checkToken () {
+  const resp = await axios
+    .post(CHECK_URL, {token: getToken()})
+  return resp
+}
+
 export async function logout () {
   user.authenticated = false
   await localStorage.removeItem('id_token')
 }
 
-// export function isLoggedIn () {
-//   try {
-//     const resp = axios
-//         .post('http://localhost:8000/api/auth/token/', {
-//           token: getToken(),
-//         })
-//     return true
-//   } catch (err) {
-//     console.log(err)
-//     return false
-//   }
-// }

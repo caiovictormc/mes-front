@@ -9,7 +9,7 @@
   import Layout from 'components/layout/Layout'
   import AuthLayout from 'components/layout/AuthLayout'
   import VuesticPreLoader from 'vuestic-components/vuestic-preloader/VuesticPreLoader.vue'
-  // import {user} from './services/auth.js'
+  import {checkToken} from './services/auth.js'
 
   export default {
     name: 'app',
@@ -20,7 +20,19 @@
     },
     computed: {
       isAuth () {
-        console.info(this.$route)
+        var inDash = this.$route.path.match('dashboard')
+        var inLogin = this.$route.path.match('login')
+        checkToken()
+          .then(rsp => {
+            if (inLogin) {
+              this.$router.push('dashboard')
+            }
+          })
+          .catch(e => {
+            if (inDash) {
+              this.$router.push('login')
+            }
+          })
         return this.$route.path.match('login')
       }
     }

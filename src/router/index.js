@@ -12,5 +12,7 @@ export default new Router({
   {
     path: '/login',
     component: lazyLoading('auth/login/Login'),
-  }]
+  },
+  { path: '*', redirect: '/login' }
+]
 })

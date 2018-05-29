@@ -21,14 +21,13 @@ export async function dataMonthly () {
 
 
 export function nodataMonthly () {
-  let rsp = {}
+  // let rsp = {}
   axios.get(MONTHLY_URL, {headers: getAuthHeader()})
     .then(function (response) {
-      rsp = response;
+      return response;
     })
     .catch(function (error) {
-      rsp = error;
-    });
-  return rsp
+      return error;
+    })
 
 }

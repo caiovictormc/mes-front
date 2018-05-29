@@ -19,8 +19,8 @@
 <script>
   import LineChartData from 'data/charts/LineChartData'
   import VerticalBarChartData from 'data/charts/VerticalBarChartData'
-  import { dataMonthly } from '../../../services/api/info'
-  import { genData } from 'data/charts/Dashboard.js'
+  import { getMonthly } from '../../../services/api/info'
+  import { safeMonthly } from 'data/charts/Dashboard.js'
   import MyChart from './MyChart.vue'
 
 
@@ -42,9 +42,9 @@
     },
     methods: {
       fillMonthlyData () {
-        dataMonthly()
+        getMonthly()
           .then(rsp => {
-            this.pieChartData = genData(rsp.data)
+            this.pieChartData = safeMonthly(rsp.data)
           })
         // this.pieChartData = monthlyChart()
         // this.pieChartData = monthlyChart.getData

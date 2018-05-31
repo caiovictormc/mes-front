@@ -1,6 +1,9 @@
-import store from 'vuex-store'
-import { dataMonthly } from '../../services/api/info'
+
+import {dataMonthly} from '../../services/api/info'
 import {default_colors} from './colors.js'
+
+import store from 'vuex-store'
+import utils from 'services/utils'
 
 
 export function safeMonthly (apiResponse) {
@@ -32,9 +35,7 @@ export function safeWeekly (apiResponse) {
   for (var day in apiResponse) {
     for (var type in apiResponse[day]) {
       var getIndex = searchLabel(dataSchema, type)
-      console.log(getIndex)
       if (!getIndex && getIndex !== 0) {
-        console.log('entrou')
         var newDataset = {
           label: type,
           backgroundColor: default_colors[i],
@@ -53,10 +54,62 @@ export function safeWeekly (apiResponse) {
 function searchLabel (schema, label) {
   var index = 0
   var array_schema = schema.datasets
-  console.log(array_schema.length)
   for (var i = 0; i < array_schema.length; i++) {
     if (array_schema[i].label === label) {
       return i
     }
   }
 }
+
+export function safeDaily (apiResponse) {
+  var dataSchema = {
+    labels: [
+      '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00',
+      '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
+      '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
+    ],
+    datasets: []
+  }
+  var i = 0
+  for (var type in apiResponse) {
+    var newDataset = {}
+    newDataset.label = type
+    newDataset.data = apiResponse[type]
+    newDataset.borderColor = default_colors[i]
+    newDataset.backgroundColor = utils.hex2rgb(default_colors[i], 0.1).css
+    dataSchema.datasets.push(newDataset)
+    i += 1
+  }
+  return dataSchema
+}
+
+
+// import utils from 'services/utils'
+// import store from 'vuex-store'
+
+// let palette = store.getters.palette
+
+// export default {
+//   labels: [
+//     '00:00', '01:00', '02:00', '03:00',
+//     '04:00', '05:00', '06:00', '07:00',
+//     '08:00', '09:00', '10:00', '11:00',
+//     '12:00', '13:00', '14:00', '15:00',
+//     '16:00', '17:00', '18:00', '19:00',
+//     '20:00', '21:00', '22:00', '23:00'
+//   ],
+//   datasets: [
+//     {
+//       label: 'Feijão',
+//       backgroundColor: utils.hex2rgb(palette.primary, 0.1).css,
+//       borderColor: utils.hex2rgb(palette.primary).css,
+//       data: [
+//         40, 39, 10, 40, 39,
+//         40, 39, 10, 40, 39,
+//         40, 39, 10, 40, 39,
+//         40, 39, 10, 40, 39,
+//         40, 39, 10, 40
+//       ]
+//     },
+//   ],
+// }

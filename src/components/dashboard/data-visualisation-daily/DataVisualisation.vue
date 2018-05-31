@@ -19,8 +19,8 @@
 <script>
   import LineChartData from 'data/charts/LineChartData'
   import VerticalBarChartData from 'data/charts/VerticalBarChartData'
-  import { getMonthly } from '../../../services/api/info'
-  import { safeMonthly } from 'data/charts/Dashboard.js'
+  import { getMonthly, getWeekly } from '../../../services/api/info'
+  import { safeMonthly, safeWeekly } from 'data/charts/Dashboard.js'
   import MyChart from './MyChart.vue'
 
 
@@ -32,7 +32,7 @@
     data () {
       return {
         lineChartData: LineChartData,
-        verticalChartData: VerticalBarChartData,
+        verticalChartData: null,
         pieChartData: null,
       }
     },
@@ -46,8 +46,10 @@
           .then(rsp => {
             this.pieChartData = safeMonthly(rsp.data)
           })
-        // this.pieChartData = monthlyChart()
-        // this.pieChartData = monthlyChart.getData
+        getWeekly()
+          .then(rsp => {
+            this.verticalChartData = safeWeekly(rsp.data)
+          })
       }
     }
   }

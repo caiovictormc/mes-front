@@ -76,7 +76,7 @@ export function safeDaily (apiResponse) {
     newDataset.label = type
     newDataset.data = apiResponse[type]
     newDataset.borderColor = default_colors[i]
-    newDataset.backgroundColor = utils.hex2rgb(default_colors[i], 0.1).css
+    newDataset.backgroundColor = utils.hex2rgb(default_colors[i], 0.001).css
     dataSchema.datasets.push(newDataset)
     i += 1
   }

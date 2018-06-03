@@ -6,7 +6,30 @@ export default Line.extend({
   mixins: [mixins.reactiveProp],
   data () {
     return {
-      defaultOptions: {}
+      defaultOptions: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: true
+            }
+          }],
+          xAxes: [ {
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: true,
+              offsetGridLines: true
+            },
+            offset: true
+          }]
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
     }
   },
 

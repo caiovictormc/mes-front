@@ -36,11 +36,18 @@
       }
     },
     mounted () {
-      this.fillMonthlyData()
-      // this.fetchDataMonthly()
+      this.fillChartData()
+    },
+    destroyed () {
+      this.lineChartData = null
+    },
+    updated () {
+      if (!this.lineChartData) {
+        this.fillChartData()
+      }
     },
     methods: {
-      fillMonthlyData () {
+      fillChartData () {
         getMonthly()
           .then(rsp => {
             this.pieChartData = safeMonthly(rsp.data)

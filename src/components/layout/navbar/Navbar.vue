@@ -43,30 +43,10 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import LanguageSelector from './LanguageSelector'
   import {logout} from '../../../services/auth.js'
 
   export default {
     name: 'navbar',
-
-    components: {
-      LanguageSelector
-    },
-
-    data () {
-      return {
-        langs: [
-          {
-            code: 'gb',
-            name: 'english'
-          },
-          {
-            code: 'es',
-            name: 'spanish'
-          }
-        ]
-      }
-    },
 
     computed: {
       ...mapGetters([

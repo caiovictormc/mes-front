@@ -9,7 +9,7 @@
       </main>
     </div>
     <div class="made-by-footer">
-      ©2018. Todos os direitos reservados.&nbsp;<a href="http://epicmax.co" target="_blank">CanionLabs </a>
+      ©2018. Todos os direitos reservados.&nbsp;<a href="http://canionlabs.io" target="_blank">CanionLabs </a>
     </div>
   </div>
 </template>

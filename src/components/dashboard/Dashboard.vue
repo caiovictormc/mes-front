@@ -9,7 +9,7 @@
 
 <script>
   import DashboardInfoWidgets from './DashboardInfoWidgets'
-  import DataVisualisation from './data-visualisation-daily/DataVisualisation.vue'
+  import DataVisualisation from './data-visualisation/DataVisualisation.vue'
 
   export default {
     name: 'dashboard',

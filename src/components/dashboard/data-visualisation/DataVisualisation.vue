@@ -17,7 +17,6 @@
 </template>
 
 <script>
-  import LineChartData from 'data/charts/LineChartData'
   import { getMonthly, getWeekly, getDaily } from '../../../services/api/info'
   import { safeMonthly, safeWeekly, safeDaily } from 'data/charts/Dashboard.js'
   import MyChart from './MyChart.vue'
@@ -37,14 +36,6 @@
     },
     mounted () {
       this.fillChartData()
-    },
-    destroyed () {
-      this.lineChartData = null
-    },
-    updated () {
-      if (!this.lineChartData) {
-        this.fillChartData()
-      }
     },
     methods: {
       fillChartData () {

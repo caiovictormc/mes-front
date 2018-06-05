@@ -130,6 +130,7 @@
     top: $sidebar-top;
     left: $sidebar-left;
     transition: all 0.2s ease;
+    z-index: $sidebar-desktop-z-index;
     opacity: 1;
 
     .sidebar-hidden_without-animation & {

@@ -79,7 +79,7 @@
   }
 
   .content-wrap {
-    margin-left: $content-wrap-ml;
+    padding-left: $layout-padding-left;
     transition: margin-left 0.3s ease;
     padding-right: $layout-padding-right;
     padding-top: $layout-padding;
@@ -90,10 +90,6 @@
       position: absolute;
       left: $vuestic-preloader-left;
       top: $vuestic-preloader-top;
-    }
-
-    .sidebar-hidden & {
-      margin-left: $sidebar-left;
     }
 
     @include media-breakpoint-down(md) {

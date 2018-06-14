@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {getAuthHeader} from '../auth.js'
 
-const API_URL = 'http://localhost:8000/api/'
+const API_URL = 'http://mes.canionlabs.io/api/'
 const CARDS_URL = API_URL + 'info/cards/'
 const MONTHLY_URL = API_URL + 'info/monthly/'
 const WEEKLY_URL = API_URL + 'info/weekly/'

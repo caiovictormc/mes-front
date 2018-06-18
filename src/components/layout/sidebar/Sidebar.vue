@@ -10,7 +10,7 @@
             @click="toggleMenuItem(item)"
             v-if="item.path">
             <i class="sidebar-menu-item-icon" v-bind:class="item.meta.iconClass"></i>
-            {{item.meta.title | translate}}
+            {{item.meta.title}}
           </router-link>
           <a href="#"
              @click.prevent="toggleMenuItem(item)"
@@ -18,7 +18,7 @@
              v-bind:class="{expanded: item.meta.expanded}"
              v-else>
             <i class="sidebar-menu-item-icon" v-bind:class="item.meta.iconClass"></i>
-            {{item.meta.title | translate}}
+            {{item.meta.title}}
             <i class="expand-icon fa fa-angle-down"></i>
           </a>
           <expanding>
@@ -32,7 +32,7 @@
                      v-bind:class="childItem.meta.iconClass"
                      v-if="childItem.meta.iconClass"
                   ></i>
-                  {{childItem.meta.title | translate}}
+                  {{childItem.meta.title}}
                 </router-link>
               </li>
             </ul>

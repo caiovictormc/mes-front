@@ -1,6 +1,10 @@
 <template>
   <div class="auth-layout">
-    <div class="nav d-lg-none"><router-link class="i-vuestic" :to="{path: '/'}"></router-link></div>
+    <div class="nav d-lg-none">
+      <router-link class="navbar-brand" to="/">
+        <span class="navbar-white-text">CanionLabs</span> MES
+      </router-link>
+    </div>
     <div class="main row">
       <div class="auth-content col-lg-6 col-12">
         <router-view></router-view>
@@ -36,6 +40,10 @@
       .i-vuestic {
         height: $auth-mobile-nav-ivuestic-h;
         width: 100%;
+      }
+      .navbar-white-text {
+        color: $white;
+        font-weight: 300;
       }
     }
     .main {

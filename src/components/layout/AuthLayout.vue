@@ -7,7 +7,7 @@
       </div>
       <div class="auth-wallpaper col-6 d-none d-lg-flex">
         <div class="oblique"></div>
-        <img id="logo" src="/static/img/canionlabs-logo-nome-lateral.png" alt="">
+        <img id="logo" src="/static/img/vertical_para_bgs_escuros.png" alt="">
       </div>
     </div>
   </div>

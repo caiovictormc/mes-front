@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <vuestic-widget class="no-padding no-v-padding">
         <div class='vuestic-breadcrumbs'>
-          <router-link :to="'/'" class="crumb">{{'breadcrumbs.home' | translate}}</router-link>
+          <router-link :to="'/'" class="crumb">{{'breadcrumbs.home'}}</router-link>
           <router-link
             v-for="(item, index) in breadcrumbs"
             :to="{path: item.path}"
@@ -11,7 +11,7 @@
             class="crumb"
             v-bind:class="{ disabled: !item.path || item.meta.breadcrumbDisabled }"
           >
-            {{item.meta.title | translate}}
+            {{item.meta.title}}
           </router-link>
         </div>
       </vuestic-widget>

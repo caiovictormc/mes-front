@@ -46,7 +46,7 @@
       },
       authPass () {
         this.error = false
-        router.push('dashboard')
+        router.push({name: 'dashboard'})
       },
       sendForm () {
         tryLogin(this.username, this.password)

@@ -6,14 +6,21 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/dashboard',
-    component: lazyLoading('dashboard/Dashboard')
+    path: '/',
+    name: 'dashboard',
+    component: lazyLoading('dashboard/Dashboard'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
+    name: 'login',
     component: lazyLoading('auth/login/Login'),
+    meta: { redirectAuth: true }
   },
-  { path: '#', redirect: '/dashboard' },
-  { path: '*', redirect: '/dashboard' }
+  { 
+    path: '*',
+    name: '404Page',
+    component: lazyLoading('PageNotFound'),
+  }
 ]
 })

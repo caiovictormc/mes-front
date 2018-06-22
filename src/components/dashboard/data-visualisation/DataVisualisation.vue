@@ -36,6 +36,11 @@
     },
     mounted () {
       this.fillChartData()
+
+      setInterval(() => {
+        this.fillChartData()
+      }, 25000);
+
     },
     methods: {
       fillChartData () {

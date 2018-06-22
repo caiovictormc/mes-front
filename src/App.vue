@@ -27,21 +27,6 @@
         'isLoading'
       ]),
       isAuth () {
-        //   var inDash = this.$route.path.match('dashboard')
-        //   var inLogin = this.$route.path.match('login')
-        //   checkToken()
-        //     .then(rsp => {
-        //       if (inLogin) {
-        //         this.$router.push('dashboard')
-        //       }
-        //     })
-        //     .catch(e => {
-        //       if (inDash) {
-        //         this.$router.push('login')
-        //       }
-        //     })
-        //   return this.$route.path.match('login')
-        // }
         console.info(this.$route)
 
         let in404 = this.$route.name === "404Page"
@@ -55,6 +40,12 @@
 
 <style lang="scss">
   @import "sass/main";
+
+  .pre-loader {
+    position: absolute;
+    left: $vuestic-preloader-left;
+    top: $vuestic-preloader-top;
+  }
 
   body {
     height: 100%;

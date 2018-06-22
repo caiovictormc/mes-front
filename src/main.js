@@ -13,6 +13,8 @@ import { sync } from 'vuex-router-sync'
 import VuesticPlugin from 'vuestic-theme/vuestic-plugin'
 import YmapPlugin from 'vue-yandex-maps'
 
+import {checkToken} from './services/auth.js'
+
 
 Vue.use(VuesticPlugin)
 Vue.use(YmapPlugin)
@@ -31,8 +33,39 @@ let mediaHandler = () => {
 }
 
 router.beforeEach((to, from, next) => {
+
   store.commit('setLoading', true)
-  next()
+
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    checkToken()
+      .then(rsp => {
+        next()
+      })
+      .catch(e => {
+        next({
+          path: '/login/',
+          query: { redirect: to.fullPath }
+        })
+      })
+
+  } else if (to.matched.some(record => record.meta.redirectAuth)) {
+    checkToken()
+      .then(rsp => {
+        next({
+          name: 'dashboard',
+          query: { redirect: to.fullPath }
+        })
+      })
+      .catch(e => {
+        next()
+      })
+
+  } else {
+    next()
+  }
+
 })
 
 router.afterEach((to, from) => {

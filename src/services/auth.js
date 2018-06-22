@@ -25,9 +25,12 @@ export function getToken () {
 }
 
 export async function refreshToken () {
-  const resp = await axios
-    .post(REFRESH_URL, {token: getToken()})
-  localStorage.setItem('id_token', resp.data.token)
+  if (localStorage.getItem('id_token')) {
+    const resp = await axios
+      .post(REFRESH_URL, {token: getToken()})
+      .then(function (response) {localStorage.setItem('id_token', response.data.token)})
+      .catch(function (error) {logout()})    
+  }
 }
 
 export function getAuthHeader () {

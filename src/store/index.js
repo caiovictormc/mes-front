@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import app from './modules/app'
 import menu from './modules/menu'
 
+import {refreshToken} from '../services/auth'
+
 import * as getters from './getters'
 
 Vue.use(Vuex)
@@ -16,7 +18,16 @@ const store = new Vuex.Store({
     menu
   },
   state: {},
-  mutations: {}
+  mutations: {},
+  actions: {
+    start ({ commit }) {
+      setInterval(() => {
+        refreshToken()
+      }, 1000 * 250)
+    }
+  }
 })
+
+store.dispatch('start')
 
 export default store

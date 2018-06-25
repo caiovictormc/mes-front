@@ -23,14 +23,20 @@
       }
     },
     methods: {
-      feedCards (feed) {
-        this.data = feed.data
+      fillCards() {
+        dataCards()
+          .then(rsp => {
+            this.data = rsp.data
+          })
+          .catch(e => {})
       }
     },
     mounted () {
-      dataCards()
-        .then(rsp => this.feedCards(rsp))
-        .catch(e => console.error(e))
+      this.fillCards()
+
+      setInterval(() => {
+        this.fillCards()
+      }, 25000);
     }
   }
 </script>

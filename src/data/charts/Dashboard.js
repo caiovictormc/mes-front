@@ -27,7 +27,7 @@ export function safeMonthly (apiResponse) {
 
 export function safeWeekly (apiResponse) {
   var dataSchema = {
-    labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+    labels: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
     datasets: []
   }
   var i = 0

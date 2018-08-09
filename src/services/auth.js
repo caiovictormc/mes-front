@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import router from '../router/index.js'
 
-const API_URL = 'http://mesadmin.canionlabs.io/api/'
+const API_URL = 'https://mesadmin.canionlabs.io/api/'
 const LOGIN_URL = API_URL + 'auth/token/'
 const REFRESH_URL = API_URL + 'auth/token-refresh/'
 const CHECK_URL = API_URL + 'auth/token-verify/'

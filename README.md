@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c0bdffcfaac4bc79c63bf005e249465)](https://www.codacy.com/project/caiovictormc/mes-front/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caiovictormc/mes-front&amp;utm_campaign=Badge_Grade_Dashboard)
+
 # MES Front
 
 MES project dashboard built with vue and vuestic.

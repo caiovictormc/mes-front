@@ -13,7 +13,7 @@ import { sync } from 'vuex-router-sync'
 import VuesticPlugin from 'vuestic-theme/vuestic-plugin'
 import YmapPlugin from 'vue-yandex-maps'
 
-import {checkToken} from './services/auth.js'
+import {isActivedSession} from './services/auth.js'
 
 
 Vue.use(VuesticPlugin)
@@ -36,32 +36,19 @@ router.beforeEach((to, from, next) => {
 
   store.commit('setLoading', true)
 
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    checkToken()
-      .then(rsp => {
-        next()
-      })
-      .catch(e => {
-        next({
-          path: '/login/',
-          query: { redirect: to.fullPath }
-        })
-      })
+  if (to.matched.some(record => record.meta.authRequired)) {
+    // Check if the url is protect
+    isActivedSession()
+      .then(rsp => { next() })
+      .catch(e => { next({ name: 'login' }) })
 
-  } else if (to.matched.some(record => record.meta.redirectAuth)) {
-    checkToken()
+  } else if (to.matched.some(record => record.meta.dashRedirect)) {
+    // Check is a logged user and redirect to dashboard
+    isActivedSession()
       .then(rsp => {
-        next({
-          name: 'dashboard',
-          query: { redirect: to.fullPath }
-        })
+        next({ name: 'dashboard', query: { redirect: to.fullPath } })
       })
-      .catch(e => {
-        next()
-      })
-
+      .catch(e => { next() })
   } else {
     next()
   }

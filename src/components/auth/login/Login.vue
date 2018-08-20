@@ -2,7 +2,7 @@
   <div class="login">
     <h2>Seja bem-vindo,</h2>
     <p class="error-text" v-if="error">Verique o usuário ou/e a senha informados</p>
-    <form @submit="sendForm">
+    <form @submit.prevent="sendForm" class="form">
         <div class="form-group">
             <div class="input-group">
                 <input type="text" id="username" required="required" v-model="username"/>

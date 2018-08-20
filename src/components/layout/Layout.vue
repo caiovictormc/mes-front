@@ -50,9 +50,6 @@
           'sidebar-hidden sidebar-hidden_without-animation': this.toggleWithoutAnimation && !this.sidebarOpened
         }
       },
-      breadcrumbs () {
-        return this.$store.getters.breadcrumbs(this.$route.name)
-      },
     }
   }
 </script>

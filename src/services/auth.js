@@ -17,7 +17,16 @@ export async function tryLogin (username, password) {
       username: username, password: password})
   localStorage.setItem('id_token', resp.data.token)
   user.authenticated = true
-  return true
+  return resp
+}
+
+export function isSession () {
+  let token = getToken()
+  if (token !== null) {
+    return true
+  }
+
+  return false
 }
 
 export function getToken () {
@@ -37,6 +46,12 @@ export function getAuthHeader () {
   return {
     'Authorization': 'JWT ' + localStorage.getItem('id_token')
   }
+}
+
+export async function isActivedSession () {
+  const resp = await axios
+    .post(CHECK_URL, {token: getToken()})
+  return resp
 }
 
 export async function checkToken () {
